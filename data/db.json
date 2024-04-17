@@ -1,0 +1,45 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane@example.com"
+    },
+    {
+      "id": "5916",
+      "username": "GFT",
+      "email": "gaf@gm.com",
+      "password": "100",
+      "confirmPassword": "100"
+    },
+    {
+      "id": "eac1",
+      "email": "gaf@gm.com",
+      "password": "100"
+    },
+    {
+      "id": "c6c3",
+      "email": "gaf@gm.com",
+      "password": "100"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "product": "Laptop",
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "product": "Phone",
+      "quantity": 2
+    }
+  ]
+}

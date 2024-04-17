@@ -11,3 +11,306 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  text-align: center;
+}
+/* header styling */
+/* .navbar{
+  margin: auto 20px;
+} */
+
+.navbar-brand, .collapse {
+  margin-left: 20px;
+}
+.navbar-toggler{
+  margin-right: 20px;
+}
+
+/* Auth status styling */
+.welcome-text {
+  font-size: 30px;
+  font-weight:normal;
+  text-align: center;
+}
+
+.username {
+  color: #007bff; /* Blue color */
+  /* You can add additional styling for the username here */
+}
+
+.not-logged-in {
+  font-size: 1.2rem;
+  padding: 20px;
+}
+
+.not-logged-in a {
+  color: #007bff; /* Blue color */
+  text-decoration: none;
+}
+
+.not-logged-in a:hover {
+  text-decoration: underline;
+}
+
+/* home styling */
+#maincontent{
+  width: 100%;
+  padding: 20px;
+  background-image: url(/public/img/deli.jpg);
+  background-size: cover;
+  display: inline-block;
+}
+#maincontent img{
+  margin: auto;
+}
+
+.content{
+  width: 370px;
+  height: 360px;
+  padding: 20px;
+  background: #eee;
+  margin-top: 200px;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  position: relative;
+  float: right;
+}
+
+.content h1{
+  font-size: 40px;
+}
+.content p{
+  font-size: 18px;
+}
+
+.content button{
+  width: 160px;
+  height: 40px;
+  cursor: pointer;
+}
+#btn {
+  float: left;
+  background: #000000;
+  color: #fff;
+  text-align: center;
+  border: none;
+}
+#btn2{
+  float: right;
+  border: none;
+  background: #2c3e50;
+}
+#btn, #btn2 a{
+  color: #fff;
+}
+
+#des{
+  display: inline-block;
+  margin: auto;
+  width: 100%;
+  padding: 20px;
+  background: #eee;
+}
+.aboutC{
+  width: 400px;
+  float: left;
+}
+.aboutC h2{
+  font-size: 40px;
+}
+.aboutC p {
+  font-size: 20px;
+}
+.aboutC button{
+  width: 200px;
+  height: 40px;
+}
+.aboutP{
+  width: 450px;
+  float: right;
+  margin-left: 10px;
+  /* background-image: url(/public/img/delv.jpg); */
+}
+.aboutP img{
+  width: 450px;
+  height: 400px;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutC{
+    width: 100%;
+  }
+  .aboutP{
+    width: auto;
+    margin-top: 20px;
+  }
+  .aboutP img{
+    width: auto;
+    height: 400px;
+  }
+}
+
+/* footer styling */
+
+.footer {
+  background-color: #2c3e50;
+  color: #bdc3c7;
+  font-size: 16px;
+  padding: 40px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  align-items: end;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  margin: 20px 10px;
+}
+
+.footer-section h2 {
+  color: #ecf0f1;
+  margin-bottom: 20px;
+}
+
+.footer-section p,
+.footer-section .fa {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.footer-section .social .fa {
+  font-size: 24px;
+  color: #ecf0f1;
+  margin-right: 10px;
+  transition: color 0.3s;
+}
+
+.footer-section .social .fa:hover {
+  color: #3498db;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #ecf0f1;
+  padding-top: 20px;
+  border-top: 1px solid #bdc3c7;
+}
+
+.footer-bottom .logo span {
+  font-weight: bold;
+  color: #ecf0f1;
+}
+
+/* @media screen and (max-width: 768px) {
+  .footer-content {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .footer-section {
+      margin: 20px 0;
+  }
+
+  .footer-bottom {
+      text-align: center;
+  }
+} */
+
+/* Sign Up styling */
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  color: #333;
+}
+
+.form-control {
+  border-color: #ccc;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Login styling */
+/* styles.css */
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  color: #333;
+}
+
+.form-control {
+  border-color: #ccc;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+
+/* dashboard styling */
+
+.dashboard-banner {
+  background: url(/public/img/LEAD\ BANNER.jpg) no-repeat center center;
+  background-size: cover;
+  height: 400px;
+  color: #fff;
+  text-align: center;
+  border-radius: 0;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-banner h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.dashboard-header {
+  background-image: linear-gradient(to right, #000000, #2e2e2e);
+  color: #fff;
+  padding: 20px 15px;
+  border-radius: 0;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.dashboard-header h2 {
+  margin: 0;
+}
+.des {
+  background-image: linear-gradient(to right, #000000, #2e2e2e);
+  color: #fff;
+  padding: 20px 15px;
+  border-radius: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
