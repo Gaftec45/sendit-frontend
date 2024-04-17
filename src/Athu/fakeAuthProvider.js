@@ -18,4 +18,4 @@ const authProvider = {
   }
 };
 
-export { authProvider };
+export { authProviderb };
