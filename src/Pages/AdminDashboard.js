@@ -72,7 +72,7 @@ const AdminDashboard = () => {
                                 </div>
                                 <div className="card-body">
                                     <h5 className="card-title">{order.senderName} → {order.receiverName}</h5>
-                                    <p className="card-text">From: {user.username} ({user.email})</p>
+                                    <p className="card-text">From: {user.username} <strong>-</strong> {user.email}</p>
                                     <p className="card-text">Destination: {order.destination}</p>
                                     <p className="card-text">Pickup: {order.pickupStation}</p>
                                     <p className="card-text">Details: {order.packageDetails}</p>
