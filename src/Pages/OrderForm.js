@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from "../component/context/AuthContext";
+import { useNavigate } from 'react-router-dom'; // If you decide to use redirection
 import Footer from '../component/Partials/Footer';
 
 const OrderForm = () => {
+  const navigate = useNavigate();
   const { currentUser, token } = useAuth();
   const [orderData, setOrderData] = useState({
     senderName: '',
@@ -13,12 +15,20 @@ const OrderForm = () => {
     packageDetails: '',
   });
 
+  useEffect(() => {
+    if (!currentUser || !currentUser._id) {
+      console.error('User not authenticated or userId not available');
+      // Optionally redirect to login or handle it as needed
+      // navigate('/login');
+    }
+  }, [currentUser, navigate]);
+
   const handleInputChange = (e) => {
     setOrderData({ ...orderData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();  // Prevent default form submission
+    event.preventDefault();
     if (!currentUser || !currentUser._id) {
       console.error('User not authenticated or userId not available');
       return;
@@ -34,7 +44,6 @@ const OrderForm = () => {
           }
         }
       );
-      // Clear orderData state after successful submission
       setOrderData({
         senderName: '',
         receiverName: '',
