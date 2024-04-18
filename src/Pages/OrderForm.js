@@ -30,8 +30,9 @@ const OrderForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // Check again at submission time in case of state updates
+    console.log(orderData);
     if (!currentUser) {
-      console.error('User not authenticated or userId not available');
+      console.error('User not authenticated');
       return;
     }
 
