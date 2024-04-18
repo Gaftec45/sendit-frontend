@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from "../component/context/AuthContext";
-import { useNavigate } from 'react-router-dom'; // If you decide to use redirection
+import { useNavigate } from 'react-router-dom';
 import Footer from '../component/Partials/Footer';
 
 const OrderForm = () => {
   const navigate = useNavigate();
-  const { currentUser, token } = useAuth();
+  const { currentUser, isToken } = useAuth();
   const [orderData, setOrderData] = useState({
     senderName: '',
     receiverName: '',
@@ -16,10 +16,10 @@ const OrderForm = () => {
   });
 
   useEffect(() => {
+    // Redirect if the user is not authenticated or if the _id is not available
     if (!currentUser || !currentUser._id) {
       console.error('User not authenticated or userId not available');
-      // Optionally redirect to login or handle it as needed
-      // navigate('/login');
+      // navigate('/login'); // Uncomment this if redirection is needed
     }
   }, [currentUser, navigate]);
 
@@ -29,6 +29,7 @@ const OrderForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // Check again at submission time in case of state updates
     if (!currentUser || !currentUser._id) {
       console.error('User not authenticated or userId not available');
       return;
@@ -37,13 +38,14 @@ const OrderForm = () => {
     try {
       await axios.post(
         'https://sendit-backend-rm0b.onrender.com/api/create-order',
-        { ...orderData, userId: currentUser._id },
+        { ...orderData, userId: currentUser._id }, // Correctly pass userId as part of the request
         {
           headers: {
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${isToken}` // Ensure Authorization header is correctly formatted
           }
         }
       );
+      // Reset form to initial state after successful submission
       setOrderData({
         senderName: '',
         receiverName: '',

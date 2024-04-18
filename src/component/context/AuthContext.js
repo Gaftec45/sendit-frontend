@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [role, setRole] = useState(null);
+    const [userId, setUserId] = useState(null);
 
     useEffect(() => {
         const verifyToken = async () => {
@@ -35,7 +36,8 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('token', token);
             setCurrentUser(user);
             setRole(role)
-            setIsToken(token)
+            setIsToken(token);
+            setUserId(userId)
             setError(null);
             console.log('User ID: ', userId);
             console.log('Token: ', token);
@@ -58,7 +60,7 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    const value = { currentUser, login, logout, isToken, error, role };
+    const value = { currentUser, userId, login, logout, isToken, error, role };
     return (
         <AuthContext.Provider value={value}>
             {!loading && children}
