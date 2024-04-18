@@ -25,7 +25,7 @@ function Signup() {
     // }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/register", formData);
+      const response = await axios.post("https://sendit-app-two.vercel.app/api/register", formData);
       console.log(response.data);
       // Clear form after successful submission
       setFormData({
