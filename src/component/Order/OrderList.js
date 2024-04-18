@@ -19,7 +19,7 @@ const OrderList = () => {
       } else{
     const fetchOrders = async () => {
       try {
-        const { data } = await axios.get('https://sendit-backend-ten.vercel.app/user/dashboard', {
+        const { data } = await axios.get('https://sendit-backend-rm0b.onrender.com/user/dashboard', {
           headers: {
             Authorization: `Bearer ${isToken}`
           }

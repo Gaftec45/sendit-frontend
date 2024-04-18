@@ -13,7 +13,7 @@ const AdminDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://sendit-backend-ten.vercel.app/admin/dashboard');
+                const response = await axios.get('https://sendit-backend-rm0b.onrender.com/admin/dashboard');
                 setAdmin(response.data.admin);
                 setUsers(response.data.users);
             } catch (error) {
@@ -25,7 +25,7 @@ const AdminDashboard = () => {
 
     const updateOrderStatus = async (userId, orderId, newStatus) => {
         try {
-            await axios.post(`https://sendit-backend-ten.vercel.app/admin/updateOrderStatus/:orderId`, {
+            await axios.post(`https://sendit-backend-rm0b.onrender.com/admin/updateOrderStatus/:orderId`, {
                 status: newStatus
             });
             console.log(userId);;

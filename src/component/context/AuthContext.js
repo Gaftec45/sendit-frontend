@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await axios.post('https://sendit-backend-ten.vercel.app/api/login', { email, password });
+            const response = await axios.post('https://sendit-backend-rm0b.onrender.com/api/login', { email, password });
             const { role, token, userId, user } = response.data;
             localStorage.setItem('token', token);
             setCurrentUser(user);
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post('https://sendit-backend-ten.vercel.app/api/logout');
+            await axios.post('https://sendit-backend-rm0b.onrender.com/api/logout');
             setCurrentUser(null);
             localStorage.removeItem('token');
             setError(null);
