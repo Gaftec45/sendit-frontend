@@ -25,7 +25,7 @@ function Signup() {
     // }
 
     try {
-      const response = await axios.post("https://sendit-backend-ten.vercel.app/api/register", formData);
+      const response = await axios.post("https://sendit-backend-rm0b.onrender.com/api/register", formData);
       console.log(response.data);
       // Clear form after successful submission
       setFormData({
