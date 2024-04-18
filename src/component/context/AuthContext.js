@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
             const token = localStorage.getItem('token');
             if (token) {
                 try {
-                    const response = await axios.get('https://sendit-backend-ten.vercel.app/user/verify-token', { headers: { Authorization: `Bearer ${token}` } });
+                    const response = await axios.get('https://sendit-backend-rm0b.onrender.com/user/verify-token', { headers: { Authorization: `Bearer ${token}` } });
                     setCurrentUser(response.data.user); // Adjust according to your API response
                 } catch (error) {
                     console.error('Token verification failed:', error);

@@ -38,7 +38,7 @@ const OrderForm = () => {
 
     try {
       await axios.post(
-        'https://sendit-backend-rm0b.onrender.com/api/create-order',
+        'https://sendit-backend-rm0b.onrender.com/api/orders',
         { ...orderData, userId: currentUser._id }, // Correctly pass userId as part of the request
         {
           headers: {

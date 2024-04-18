@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from "../component/context/AuthContext";
+import { NavLink } from 'react-router-dom';
 
 const AdminDashboard = () => {
 
-    const { currentUser } = useAuth();
+    const { currentUser, logout } = useAuth();
 
     const [users, setUsers] = useState([]);
     const [admin, setAdmin] = useState({ username: '', email: '' });
@@ -16,16 +17,17 @@ const AdminDashboard = () => {
                 const response = await axios.get('https://sendit-backend-rm0b.onrender.com/admin/dashboard');
                 setAdmin(response.data.admin);
                 setUsers(response.data.users);
+                console.log(admin);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
         fetchData();
-    }, []);
+    }, [admin]);
 
     const updateOrderStatus = async (userId, orderId, newStatus) => {
         try {
-            await axios.post(`https://sendit-backend-rm0b.onrender.com/admin/updateOrderStatus/:orderId`, {
+            await axios.post(`http://localhost:5000/admin/updateOrderStatus/:orderId`, {
                 status: newStatus
             });
             console.log(userId);;
@@ -55,9 +57,10 @@ const AdminDashboard = () => {
                         <strong>Admin Details</strong>
                     </div>
                     <div className="card-body">
-                        <h5 className="card-title">{ admin && currentUser.username}</h5>
+                        <h5 className="card-title">{currentUser.username}</h5>
                         <p className="card-text">{currentUser.email}</p>
-                        <a href="/api/logout" className="btn btn-success">Log Out</a>
+                        <NavLink className="btn btn-success" onClick={logout}>Logout</NavLink>
+
                     </div>
                 </div>
             </div>
