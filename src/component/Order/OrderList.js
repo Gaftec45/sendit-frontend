@@ -19,7 +19,7 @@ const OrderList = () => {
       } else{
     const fetchOrders = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/user/dashboard', {
+        const { data } = await axios.get('https://sendit-backend-ten.vercel.app/user/dashboard', {
           headers: {
             Authorization: `Bearer ${isToken}`
           }
@@ -46,7 +46,7 @@ const OrderList = () => {
   const handleDelete = async (orderId) => {
     if (window.confirm('Are you sure you want to delete this order?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/orders/${orderId}`, {
+        await axios.delete(`https://sendit-backend-ten.vercel.app/api/orders/${orderId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

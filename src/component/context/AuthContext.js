@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
             const token = localStorage.getItem('token');
             if (token) {
                 try {
-                    const response = await axios.get('http://localhost:5000/user/verify-token', { headers: { Authorization: `Bearer ${token}` } });
+                    const response = await axios.get('https://sendit-backend-ten.vercel.app/user/verify-token', { headers: { Authorization: `Bearer ${token}` } });
                     setCurrentUser(response.data.user); // Adjust according to your API response
                 } catch (error) {
                     console.error('Token verification failed:', error);
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await axios.post('https://sendit-app-two.vercel.app/api/login', { email, password });
+            const response = await axios.post('https://sendit-backend-ten.vercel.app/api/login', { email, password });
             const { role, token, userId, user } = response.data;
             localStorage.setItem('token', token);
             setCurrentUser(user);
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post('https://sendit-app-two.vercel.app/api/logout');
+            await axios.post('https://sendit-backend-ten.vercel.app/api/logout');
             setCurrentUser(null);
             localStorage.removeItem('token');
             setError(null);

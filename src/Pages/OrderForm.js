@@ -29,7 +29,7 @@ const OrderForm = () => {
   
       // Make the POST request with orderData and userId
       await axios.post(
-        'http://localhost:5000/api/orders',
+        'https://sendit-backend-ten.vercel.app/api/orders',
         { ...orderData, userId: currentUser._id }, // Pass userId as part of order data
         {
           headers: {

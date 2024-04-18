@@ -21,7 +21,7 @@ function ProtectedPage() {
     } else {
       const fetchUserData = async () => {
         try {
-          const { data } = await axios.get('https://sendit-app-two.vercel.app/user/dashboard', {
+          const { data } = await axios.get('https://sendit-backend-ten.vercel.app/user/dashboard', {
             headers: {
               'Authorization': `Bearer ${isToken}`
             }
@@ -51,7 +51,7 @@ function ProtectedPage() {
   const handleDelete = async (orderId) => {
     if (window.confirm('Are you sure you want to delete this order?')) {
       try {
-        await axios.delete(`https://sendit-app-two.vercel.app/api/orders/${orderId}`, {
+        await axios.delete(`https://sendit-backend-ten.vercel.app/api/orders/${orderId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
