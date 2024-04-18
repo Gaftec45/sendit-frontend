@@ -13,13 +13,13 @@ import { Navigate } from "react-router-dom";
 // Creating a layout or wrapper for private routes
 function PrivateRoute({ children }) {
   const { currentUser, role } = useAuth();
-  return currentUser && role === 'user' ? children : <Navigate to="/login" replace />;
+  return currentUser && role === 'user' ? children : <Navigate to="" replace />;
 }
 
 // Admin-specific route
 function AdminRoute({ children }) {
   const { currentUser, role } = useAuth();
-  return currentUser && role === 'admin' ? children : <Navigate to="/login" replace />;
+  return currentUser && role === 'admin' ? children : <Navigate to="" replace />;
 }
 
 export default function App() {
