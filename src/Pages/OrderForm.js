@@ -17,7 +17,7 @@ const OrderForm = () => {
 
   useEffect(() => {
     // Redirect if the user is not authenticated or if the _id is not available
-    if (!currentUser || !currentUser._id) {
+    if (!currentUser) {
       console.error('User not authenticated or userId not available');
       // navigate('/login'); // Uncomment this if redirection is needed
     }
