@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
-  const { login, error, isToken, role } = useAuth();
+  const { isToken, login, error, role } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -14,17 +14,22 @@ function Login() {
     // If there is a token, redirect to dashboard
     if (isToken || role) {
       // navigate('/user/dashboard');
-      if (role === 'admin') {
+    if (role === 'admin') {
         navigate('/admin/dashboard');
     } else if (role === 'user') {
         navigate('/user/dashboard');
     } else {
         // Handle unexpected role
-        error('Unexpected user role');
+        // error('Unexpected user role');
+        console.error("an error occured")
     }
     }
   }, [isToken, role, navigate, error]); 
-
+  useEffect(() => {
+    if(isToken !== null){
+      navigate('/user/dashboard');
+    }
+  }, [ isToken, navigate ])
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

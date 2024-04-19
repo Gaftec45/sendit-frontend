@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "./context/AuthContext";
 import { NavLink } from "react-router-dom";
 
 function AuthStatus() {
   const { currentUser, isToken } = useAuth();
-
+  
+useEffect(()=>{
+  if(isToken === null){
+    console.log('is null', isToken)
+    console.log('is a :', currentUser);
+  }
+})
 
   return (
     <div className="container-fluid">
-      { currentUser && isToken ? (
+      { currentUser != null && isToken != null ? (
         <h2 className="dashboard-header">
           Welcome back to your Dashboard <span className="username">{currentUser.username}</span>
         </h2>

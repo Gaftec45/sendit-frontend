@@ -27,7 +27,7 @@ const AdminDashboard = () => {
 
     const updateOrderStatus = async (userId, orderId, newStatus) => {
         try {
-            await axios.post(`http://localhost:5000/admin/updateOrderStatus/:orderId`, {
+            await axios.post(`http://localhost:5000/admin/orderstatus/${orderId}`, {
                 status: newStatus
             });
             console.log(userId);;
@@ -46,7 +46,7 @@ const AdminDashboard = () => {
             console.error('Error updating order status:', error);
             alert('Failed to update order status');
         }
-    };    
+    };   
     
 
     return (
@@ -101,119 +101,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-
-
-/* import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-
-const AdminDashboard = () => {
-    const [users, setUsers] = useState([]);
-    const [admin, setAdmin] = useState({ username: '', email: '' });
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/admin/dashboard');
-                console.log(response.data); // Check what exactly is being received
-                setAdmin(response.data.admin);
-                setUsers(response.data.users);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-        fetchData();
-    }, []);
-
-    const updateOrderStatus = async (userId, orderId, newStatus) => {
-        try {
-            await axios.post(`/admin/updateOrderStatus/${orderId}`, { status: newStatus });
-            const updatedUsers = users.map(user =>
-                user._id === userId ? {
-                    ...user,
-                    orders: user.orders.map(order =>
-                        order._id === orderId ? { ...order, status: newStatus } : order
-                    )
-                } : user
-            );
-            setUsers(updatedUsers);
-            alert('Order status updated successfully');
-        } catch (error) {
-            console.error('Error updating order status:', error);
-            alert('Failed to update order status');
-        }
-    };
-
-    return (
-        <div className="mt-4">
-            <div className="card mb-3">
-                <div className="card-header">
-                    <h2>Admin Details</h2>
-                </div>
-                <div className="card-body">
-                    <p><strong>Username:</strong> {admin?.username}</p>
-                    <p><strong>Email:</strong> {admin?.email}</p>
-                    <p><a href="/api/logout" className="btn btn-primary">Log Out</a></p>
-                </div>
-            </div>
-            <div>
-                <h1>Admin Dashboard</h1>
-                {users.length > 0 ? (
-                    <table className="table table-striped">
-                        <thead className="thead-dark">
-                            <tr>
-                                <th>User ID</th>
-                                {/* <th>Email</th> }
-                                <th>Sender Name</th>
-                                <th>Receiver Name</th>
-                                <th>Destination</th>
-                                <th>Pickup Station</th>
-                                <th>Package Details</th>
-                                <th>Order Date</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map(user => user.orders.map((order, index) => (
-                                <tr key={order._id}>
-                                    {index === 0 && (
-                                        <td rowSpan={user.orders.length}>{user._id}</td>
-                                    )}
-                                    {/* {index === 0 && (
-                                        <td rowSpan={user.orders.length}>{user.email}</td>
-                                    )} }
-                                    <td>{order.senderName}</td>
-                                    <td>{order.receiverName}</td>
-                                    <td>{order.destination}</td>
-                                    <td>{order.pickupStation}</td>
-                                    <td>{order.packageDetails}</td>
-                                    <td>{new Date(order.createdAt).toDateString()}</td>
-                                    <td>{order.status}</td>
-                                    <td>
-                                        <form onSubmit={(e) => {
-                                            e.preventDefault();
-                                            updateOrderStatus(user._id, order._id, e.target.status.value);
-                                        }}>
-                                            <select className="custom-select mr-sm-2" name="status" defaultValue={order.status}>
-                                                <option value="pending">Pending</option>
-                                                <option value="shipped">Shipped</option>
-                                                <option value="delivered">Delivered</option>
-                                                <option value="cancelled">Cancelled</option>
-                                            </select>
-                                            <button type="submit" className="btn btn-primary mt-2">Update</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            )))}
-                        </tbody>
-                    </table>
-                ) : (
-                    <p>No users found.</p>
-                )}
-            </div>
-        </div>
-    );
-};
-
-export default AdminDashboard; */

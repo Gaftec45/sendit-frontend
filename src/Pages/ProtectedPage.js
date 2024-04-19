@@ -8,17 +8,19 @@ import Footer from '../component/Partials/Footer';
 import axios from 'axios';
 
 function ProtectedPage() {
-  const { currentUser, isToken } = useAuth();
+  const { isToken, currentUser } = useAuth();
   const navigate = useNavigate();
-  // const [username, setUsername] = useState('');
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
   useEffect(() => {
-    if (!isToken) {
-      // navigate("/login");
-    } else {
+    if(isToken === null){
+      navigate("/login")
+    }
+    if (isToken != null) {
+      console.log(isToken);
       const fetchUserData = async () => {
         try {
           const { data } = await axios.get('https://sendit-backend-rm0b.onrender.com/user/dashboard', {
@@ -26,7 +28,7 @@ function ProtectedPage() {
               'Authorization': `Bearer ${isToken}`
             }
           });
-          // setUsername(data.username); // Ensure setUsername is defined or managed properly
+
           setTimeout(() => {
             setOrders(data.orders || []); // Assume 'orders' is the correct key
             setLoading(false);
@@ -41,11 +43,12 @@ function ProtectedPage() {
 
       fetchUserData();
     }
-  }, [isToken, navigate]);
+  }, [ isToken, navigate ]);
 
   const handleEdit = async (orderId) => {
     console.log(`Editing order with ID: ${orderId}`);
     // Place your edit logic here
+    navigate(`/edit-order/${orderId}`);
   };
 
   const handleDelete = async (orderId) => {
@@ -69,7 +72,7 @@ function ProtectedPage() {
         <h2>{currentUser.username} Welcome Back</h2>
       </div> */}
       <div className="dashboard-banner">
-        <h1>{currentUser.username}, Here Is Your Orders Overview</h1>
+        <h1> {currentUser.username} Here Is Your Orders Overview</h1>
       </div>
       {/* <OrderList /> */}
       <div>

@@ -6,11 +6,11 @@ import AuthNavbar from "./Partials/AuthNavbar";
 import AuthStatus from "./AuthStatus";
 
 function Layout() {
-  const { currentUser, isToken } = useAuth();
+  const { currentUser, isToken } = useAuth()
 
   return (
     <div>
-      { currentUser && isToken ? <AuthNavbar /> : <GuestNavbar />}
+      { currentUser && isToken !== null ? <AuthNavbar /> : <GuestNavbar />}
       <AuthStatus />
       <div className="container-fluid">
         <Outlet />

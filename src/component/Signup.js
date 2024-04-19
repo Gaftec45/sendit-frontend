@@ -25,7 +25,7 @@ function Signup() {
     // }
 
     try {
-      const response = await axios.post("https://sendit-backend-rm0b.onrender.com/api/register", formData);
+      const response = await axios.post("http://localhost:5000/api/register", formData);
       console.log(response.data);
       // Clear form after successful submission
       setFormData({
@@ -85,18 +85,6 @@ function Signup() {
                     placeholder="Enter Password"
                   />
                 </div>
-                {/* <div className="form-group">
-                  <input
-                    type="password"
-                    name="confirmPassword"
-                    value={confirmPassword}
-                    onChange={handleChange}
-                    className="form-control"
-                    required
-                    autoComplete="off"
-                    placeholder="Confirm Password"
-                  />
-                </div> */}
                 <button type="submit" className="btn btn-primary btn-block">
                   Signup
                 </button>
