@@ -278,7 +278,7 @@ code {
 .dashboard-banner {
   background: url(/public/img/deli.jpg) no-repeat center center;
   background-size: cover;
-  height: 400px;
+  height: 500px;
   color: #fff;
   text-align: center;
   border-radius: 0;
@@ -286,6 +286,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
 }
 
 .dashboard-banner h1 {
