@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import Footer from '../component/Partials/Footer';
-// import OrderList from '../component/Order/OrderList';
 import axios from 'axios';
 
 function ProtectedPage() {
@@ -47,7 +46,7 @@ function ProtectedPage() {
     if (orderStatus === 'pending') {
       navigate(`/edit-order/${orderId}`);
     } else {
-      alert('Cannot edit order with pending status');
+      alert('Cannot edit order with status other than pending');
     }
   };
   
@@ -66,20 +65,16 @@ function ProtectedPage() {
         }
       }
     } else {
-      alert('Cannot delete order with pending status');
+      alert('Cannot delete order with status other than pending');
     }
   };
   
 
   return (
     <div>
-      {/* <div className="dashboard-header">
-        <h2>{currentUser.username} Welcome Back</h2>
-      </div> */}
       <div className="dashboard-banner">
         <h1> {currentUser.username} Here Is Your Orders Overview</h1>
       </div>
-      {/* <OrderList /> */}
       <div>
       <h2  style={{float: 'left', padding: "8px"}}>Your Orders</h2>
       <h5  style={{float: 'right', padding: "8px"}}><NavLink style={{ backgroundColor: '#3498db', color: '#fff', textDecoration: "none",  padding: "5px"}} to="/new-order">Create New Order</NavLink></h5>
@@ -114,11 +109,11 @@ function ProtectedPage() {
                 <td>
                   <FaEdit
                     style={{ cursor: 'pointer', marginRight: '10px', color: 'green' }}
-                    onClick={() => handleEdit(order._id)}
+                    onClick={() => handleEdit(order._id, order.status)}
                   />
                   <FaTrash
                     style={{ cursor: 'pointer', color: 'red' }}
-                    onClick={() => handleDelete(order._id)}
+                    onClick={() => handleDelete(order._id, order.status)}
                   />
                 </td>
               </tr>
