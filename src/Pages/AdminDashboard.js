@@ -3,18 +3,28 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from "../component/context/AuthContext";
 import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const AdminDashboard = () => {
 
-    const { currentUser, logout } = useAuth();
-
+    const { currentUser, isToken, logout } = useAuth();
+    const navigate = useNavigate();
     const [users, setUsers] = useState([]);
     const [admin, setAdmin] = useState({ username: '', email: '' });
 
     useEffect(() => {
+        if(isToken === null){
+            navigate("/login")
+          }
+          if (isToken != null) {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://sendit-backend-rm0b.onrender.com/admin/dashboard');
+                const response = await axios.get('https://sendit-backend-rm0b.onrender.com/admin/dashboard', {
+                    headers: {
+                      'Authorization': `Bearer ${isToken}`
+                    }
+                  });
                 setAdmin(response.data.admin);
                 setUsers(response.data.users);
             } catch (error) {
@@ -22,7 +32,8 @@ const AdminDashboard = () => {
             }
         };
         fetchData();
-    }, [admin]);
+    }
+    }, [admin, isToken, navigate]);
 
     const updateOrderStatus = async (userId, orderId, newStatus) => {
         try {
