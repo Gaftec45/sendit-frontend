@@ -42,26 +42,34 @@ function ProtectedPage() {
     }
   }, [ isToken, navigate ]);
 
-  const handleEdit = async (orderId) => {
+  const handleEdit = async (orderId, orderStatus) => {
     console.log(`Editing order with ID: ${orderId}`);
-    // Place your edit logic here
-    navigate(`/edit-order/${orderId}`);
-  };
-
-  const handleDelete = async (orderId) => {
-    if (window.confirm('Are you sure you want to delete this order?')) {
-      try {
-        await axios.delete(`https://sendit-backend-rm0b.onrender.com/api/orders/${orderId}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        });
-        setOrders(orders.filter(order => order._id !== orderId));
-      } catch (error) {
-        console.error('Error deleting order:', error);
-      }
+    if (orderStatus === 'pending') {
+      navigate(`/edit-order/${orderId}`);
+    } else {
+      alert('Cannot edit order with pending status');
     }
   };
+  
+  const handleDelete = async (orderId, orderStatus) => {
+    if (orderStatus === 'pending') {
+      if (window.confirm('Are you sure you want to delete this order?')) {
+        try {
+          await axios.delete(`https://sendit-backend-rm0b.onrender.com/api/orders/${orderId}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          });
+          setOrders(orders.filter(order => order._id !== orderId));
+        } catch (error) {
+          console.error('Error deleting order:', error);
+        }
+      }
+    } else {
+      alert('Cannot delete order with pending status');
+    }
+  };
+  
 
   return (
     <div>
