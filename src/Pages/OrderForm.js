@@ -14,8 +14,7 @@ const OrderForm = () => {
     pickupStation: '',
     packageDetails: '',
   });
-  // const currentUser  = localStorage.getItem("user");
-  // const isToken = localStorage.getItem("token");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if(isToken === null){
@@ -35,7 +34,6 @@ const OrderForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // Check again at submission time in case of state updates
-    console.log(orderData);
     if (!currentUser) {
       console.error('User not authenticated');
       return;
@@ -52,7 +50,6 @@ const OrderForm = () => {
         }
       );
 
-      alert('Order Created Successfully.')
       // Reset form to initial state after successful submission
       setOrderData({
         senderName: '',
@@ -62,9 +59,11 @@ const OrderForm = () => {
         packageDetails: '',
       });
 
-      navigate('/user/dashboard')
+      navigate('/user/dashboard');
+      alert('Order Created Successfully.');
     } catch (error) {
       console.error('Error creating order:', error);
+      setError(error.response?.data?.message || 'Error creating order. Please try again.');
     }
   };
 
@@ -72,6 +71,7 @@ const OrderForm = () => {
     <>
       <div className="container-fluid">
         <h2 className="my-4">Create Order</h2>
+        {error && <p className="text-danger">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="senderName" className="form-label">Sender Name:</label>

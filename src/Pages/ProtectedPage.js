@@ -26,13 +26,11 @@ function ProtectedPage() {
             }
           });
 
-          setTimeout(() => {
-            setOrders(data.orders || []); // Assume 'orders' is the correct key
-            setLoading(false);
-          }, 1000);
+          setOrders(data.orders || []); // Assume 'orders' is the correct key
+          setLoading(false);
         } catch (error) {
           console.error('Error fetching user data:', error);
-          setError(error.data ? error.data.message : 'Error fetching orders');
+          setError(error.response?.data?.message || 'Error fetching orders');
           setLoading(false);
         }
       };
@@ -42,11 +40,10 @@ function ProtectedPage() {
   }, [ isToken, navigate ]);
 
   const handleEdit = async (orderId, orderStatus) => {
-    console.log(`Editing order with ID: ${orderId}`);
     if (orderStatus === 'pending') {
       navigate(`/edit-order/${orderId}`);
     } else {
-      alert('Cannot perform this action...!');
+      alert('Cannot perform this action on orders with status other than pending');
     }
   };
   
@@ -59,33 +56,32 @@ function ProtectedPage() {
               Authorization: `Bearer ${localStorage.getItem('token')}`
             }
           });
-          setOrders(orders.filter(order => order._id !== orderId));
+          setOrders(prevOrders => prevOrders.filter(order => order._id !== orderId));
         } catch (error) {
           console.error('Error deleting order:', error);
         }
       }
     } else {
-      alert('Cannot perform this action...!');
+      alert('Cannot perform this action on orders with status other than pending');
     }
   };
   
 
   return (
-    <div>
+    <div className="protected-page">
       <div className="dashboard-banner">
-        <h1> {currentUser.username} Here Is Your Orders Overview</h1>
+        <h1>{currentUser.username}'s Orders Overview</h1>
       </div>
-      <div>
-      <h2  style={{float: 'left', padding: "8px"}}>Your Orders</h2>
-      <h5  style={{float: 'right', padding: "8px"}}><NavLink style={{ backgroundColor: '#3498db', color: '#fff', textDecoration: "none",  padding: "5px"}} to="/new-order">Create New Order</NavLink></h5>
+      <div className="order-actions">
+        <h2>Your Orders</h2>
+        <NavLink className="create-order-link" to="/new-order">Create New Order</NavLink>
+      </div>
       {loading ? (
-        <div>
         <p>Loading orders...</p>
-        </div>
       ) : error ? (
-        <p style={{ color: 'red' }}>{error}</p>
+        <p className="error-message">{error}</p>
       ) : orders.length > 0 ? (
-        <table className="table table-striped table-hover order-table">
+        <table className="order-table">
           <thead>
             <tr>
               <th>Sender</th>
@@ -108,11 +104,11 @@ function ProtectedPage() {
                 <td>{order.status || 'Pending'}</td>
                 <td>
                   <FaEdit
-                    style={{ cursor: 'pointer', marginRight: '10px', color: 'green' }}
+                    className="edit-icon"
                     onClick={() => handleEdit(order._id, order.status)}
                   />
                   <FaTrash
-                    style={{ cursor: 'pointer', color: 'red' }}
+                    className="delete-icon"
                     onClick={() => handleDelete(order._id, order.status)}
                   />
                 </td>
@@ -121,12 +117,11 @@ function ProtectedPage() {
           </tbody>
         </table>
       ) : (
-        <p>No orders to display.  <NavLink to="/new-order">Create Order</NavLink></p>
+        <p>No orders to display. <NavLink to="/new-order">Create Order</NavLink></p>
       )}
-    </div>
       <div className="des">
-                <span>have you seen our new update</span>
-            </div>
+        <span>Have you seen our new update?</span>
+      </div>
       <Footer />
     </div>
   );
