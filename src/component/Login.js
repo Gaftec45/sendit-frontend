@@ -10,20 +10,17 @@ function Login() {
     password: "",
   });
 
-  // Check if token exists and redirect appropriately
+  // Redirect if already logged in
   useEffect(() => {
     if (isToken) {
-      // User already logged in, redirect based on the role
-      switch(role) {
-        case 'admin':
-          navigate('/admin/dashboard');
-          break;
-        case 'user':
-          navigate('/user/dashboard');
-          break;
-        default:
-          // Optionally handle unexpected role or redirect to a default page
-          console.error("Unexpected user role");
+      // Redirect based on the user's role
+      if (role === 'admin') {
+        navigate('/admin/dashboard');
+      } else if (role === 'user') {
+        navigate('/user/dashboard');
+      } else {
+        // Optionally handle unexpected role or redirect to a generic page
+        console.error("Unexpected user role");
       }
     }
   }, [isToken, role, navigate]);
@@ -40,6 +37,9 @@ function Login() {
       console.error(error);
     }
   };
+
+  // Return null if user is already logged in (render nothing)
+  if (isToken) return null;
 
   return (
     <div className="container">
