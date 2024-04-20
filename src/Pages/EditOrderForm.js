@@ -70,7 +70,7 @@ const EditOrderForm = () => {
     };
 
     return (
-        <div className="container mt-5">
+        <div>
             <h1 className="mb-4">Edit Order</h1>
             {error && <div className="alert alert-danger">{error}</div>}
             {isLoading ? <div className="alert alert-success mt-4 text-center" role="alert">
