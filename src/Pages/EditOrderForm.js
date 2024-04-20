@@ -73,7 +73,7 @@ const EditOrderForm = () => {
             <h1 className="mb-4">Edit Order</h1>
             {error && <div className="alert alert-danger">{error}</div>}
             {isLoading ? <div className="alert alert-success mt-4 text-center" role="alert">
-                <span>Order Updated Successfully, you'll be redirected to the dashboard shortly...</span>
+                <span>Loading...</span>
             </div> : (
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">

@@ -46,7 +46,7 @@ function ProtectedPage() {
     if (orderStatus === 'pending') {
       navigate(`/edit-order/${orderId}`);
     } else {
-      alert('Cannot edit order with status other than pending');
+      alert('Cannot perform this action...!');
     }
   };
   
@@ -65,7 +65,7 @@ function ProtectedPage() {
         }
       }
     } else {
-      alert('Cannot delete order with status other than pending');
+      alert('Cannot perform this action...!');
     }
   };
   
