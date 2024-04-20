@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../component/context/AuthContext';  // Adjust path as necessary
 import { useNavigate } from 'react-router-dom';
+import Footer from '../component/Partials/Footer';
 
 
 const EditOrderForm = () => {
@@ -104,6 +105,7 @@ const EditOrderForm = () => {
                     <button type="submit" className="btn btn-primary" disabled={isLoading}>Update Order</button>
                 </form>
             )}
+            <Footer />
         </div>
     );
 };
