@@ -9,8 +9,6 @@ const EditOrderForm = () => {
     const navigate = useNavigate();
     const { orderId } = useParams();
 
-
-    // let URL = 'https://sendit-backend-rm0b.onrender.com'
     const { isToken } = useAuth();
 
     const [order, setOrder] = useState({
