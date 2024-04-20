@@ -21,6 +21,7 @@ function Login() {
       } else {
         // Optionally handle unexpected role or redirect to a generic page
         console.error("Unexpected user role");
+        navigate('/');
       }
     }
   }, [isToken, role, navigate]);
