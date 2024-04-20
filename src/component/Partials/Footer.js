@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaFacebook, FaInstagram, FaLinkedin, FaGoogle, FaPinterest, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -26,12 +27,12 @@ const Footer = () => {
                     <p>Easy to Track Progress</p>
                 </div>
                 <div className="footer-section social">
-                    <i className="fa fa-facebook"></i>
-                    <i className="fa fa-instagram"></i>
-                    <i className="fa fa-linkedin"></i>
-                    <i className="fa fa-google"></i>
-                    <i className="fa fa-pinterest"></i>
-                    <i className="fa fa-twitter"></i>
+                    <FaFacebook className="icon" />
+                    <FaInstagram className="icon" />
+                    <FaLinkedin className="icon" />
+                    <FaGoogle className="icon" />
+                    <FaPinterest className="icon" />
+                    <FaTwitter className="icon" />
                 </div>
             </div>
             <div className="footer-bottom">
