@@ -9,10 +9,9 @@ function Login() {
     email: "",
     password: "",
   });
-
+  
   useEffect(() => {
-    // If there is a token, redirect to dashboard
-    if (isToken || role) {
+    if (isToken !== null || role) {
       // navigate('/user/dashboard');
     if (role === 'admin') {
         navigate('/admin/dashboard');
@@ -24,12 +23,7 @@ function Login() {
         console.error("an error occured")
     }
     }
-  }, [isToken, role, navigate, error]); 
-  useEffect(() => {
-    if(isToken !== null){
-      navigate('/user/dashboard');
-    }
-  }, [ isToken, navigate ])
+  }, [ isToken, role, navigate ])
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

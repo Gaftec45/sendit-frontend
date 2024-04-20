@@ -8,42 +8,42 @@ export const AuthProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [role, setRole] = useState(null);
     const [userId, setUserId] = useState(null);
+    const [currentUser, setCurrentUser] = useState(() => {
+        const savedUser = localStorage.getItem("user");
+        return savedUser ? JSON.parse(savedUser) : null; // Parse the user object
+    });
     const isToken = localStorage.getItem("token");
-    const currentUser = localStorage.getItem("user");
-    
 
     useEffect(() => {
         const verifyToken = async () => {
-            
             if (isToken) {
                 try {
-                    await axios.get('https://sendit-backend-rm0b.onrender.com/user/verify-token', { headers: { Authorization: `Bearer ${isToken}` } });
-                    // setCurrentUser(response.data.user); // Adjust according to your API response
+                    await axios.get('https://sendit-backend-rm0b.onrender.com/user/verify-token', {
+                        headers: { Authorization: `Bearer ${isToken}` }
+                    });
+                    // Optionally, update the user from the response
+                    setCurrentUser(JSON.parse(localStorage.getItem("user"))); // Refresh user from storage if needed
                 } catch (error) {
                     console.error('Token verification failed:', error);
-                    // setCurrentUser(null);
+                    setCurrentUser(null); // Clear user on failure
                 }
             }
             setLoading(false);
         };
 
         verifyToken();
-    }, [ isToken ]);
+    }, [isToken]);
 
     const login = async (email, password) => {
         try {
             const response = await axios.post('https://sendit-backend-rm0b.onrender.com/api/login', { email, password });
             const { role, token, userId, user } = response.data;
             localStorage.setItem('token', token);
-            localStorage.setItem('user', user.data)
-            // setCurrentUser(user);
-            setRole(role)
-            // setIsToken(token);
-            setUserId(userId)
+            localStorage.setItem('user', JSON.stringify(user)); // Make sure to stringify
+            setCurrentUser(user); // Set current user in state
+            setRole(role);
+            setUserId(userId);
             setError(null);
-            console.log('User ID: ', userId);
-            console.log('Token: ', token);
-            // If using React Router, you would navigate here
         } catch (err) {
             console.error('Login failed', err);
             setError(err.response?.data?.error || 'Login failed. Please try again.');
@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
     const logout = async () => {
         try {
             await axios.post('https://sendit-backend-rm0b.onrender.com/api/logout');
-            // setCurrentUser(null);
+            setCurrentUser(null);
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             setError(null);

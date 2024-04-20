@@ -52,7 +52,7 @@ const OrderForm = () => {
         }
       );
 
-      alert('Order Created Successfully...')
+      alert('Order Created Successfully.')
       // Reset form to initial state after successful submission
       setOrderData({
         senderName: '',

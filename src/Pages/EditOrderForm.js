@@ -8,7 +8,9 @@ import { useNavigate } from 'react-router-dom';
 const EditOrderForm = () => {
     const navigate = useNavigate();
     const { orderId } = useParams();
-    // const history = useHistory();
+
+
+    // let URL = 'https://sendit-backend-rm0b.onrender.com'
     const { isToken } = useAuth();
 
     const [order, setOrder] = useState({
@@ -55,12 +57,10 @@ const EditOrderForm = () => {
         }
         setIsLoading(true);
         try {
-            await axios.post(`http://localhost:5000/api/orders/${orderId}`, order, {
+            await axios.post(`https://sendit-backend-rm0b.onrender.com/api/orders/${orderId}`, order, {
                 headers: { Authorization: `Bearer ${isToken}` }
             });
-            // alert('Order updated successfully!');
-            // history.push('/orders');
-
+            alert('Order updated successfully!');
             setTimeout(() => {
             navigate('/user/dashboard')
             }, 3000);

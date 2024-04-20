@@ -37,7 +37,11 @@ export default function App() {
         { path: "user/dashboard", element: <ProtectedPage /> },
         { path: "new-order", element: <OrderForm /> },
         { path: "edit-order/:orderId", element:  <EditOrderForm /> },
-        { path: "admin/dashboard", element: <AdminRoute><AdminDashboard /></AdminRoute> },
+        { path: "admin/dashboard", element: <AdminDashboard /> },
+        { path: "admin/dashboard", element: <AdminRoute></AdminRoute> },
+        { path: "admin/dashboard", element: <PrivateRoute></PrivateRoute> },
+
+
       ],
     },
   ]);

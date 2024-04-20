@@ -17,7 +17,6 @@ const AdminDashboard = () => {
                 const response = await axios.get('https://sendit-backend-rm0b.onrender.com/admin/dashboard');
                 setAdmin(response.data.admin);
                 setUsers(response.data.users);
-                console.log(admin);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -27,11 +26,9 @@ const AdminDashboard = () => {
 
     const updateOrderStatus = async (userId, orderId, newStatus) => {
         try {
-            await axios.post(`http://localhost:5000/admin/orderstatus/${orderId}`, {
+            await axios.post(`https://sendit-backend-rm0b.onrender.com/admin/orderstatus/${orderId}`, {
                 status: newStatus
             });
-            console.log(userId);;
-            console.log(orderId);
             const updatedUsers = users.map(user =>
                 user._id === userId ? {
                     ...user,

@@ -14,13 +14,11 @@ function ProtectedPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
   useEffect(() => {
     if(isToken === null){
       navigate("/login")
     }
     if (isToken != null) {
-      console.log(isToken);
       const fetchUserData = async () => {
         try {
           const { data } = await axios.get('https://sendit-backend-rm0b.onrender.com/user/dashboard', {
@@ -33,7 +31,6 @@ function ProtectedPage() {
             setOrders(data.orders || []); // Assume 'orders' is the correct key
             setLoading(false);
           }, 1000);
-          console.log(`Token: ${isToken}`);
         } catch (error) {
           console.error('Error fetching user data:', error);
           setError(error.data ? error.data.message : 'Error fetching orders');
