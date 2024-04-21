@@ -5,7 +5,6 @@ const Footer = () => {
     return (
         <div className='footer-section'>
         <footer className="bg-dark text-white">
-            <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-3">
                         <h2>About</h2>
@@ -40,9 +39,8 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-            </div>
             <div className="footer-bottom bg-secondary py-3">
-                <div className="container">
+
                     <div className="row">
                         <div className="col-md-6">
                             <span>Our carrier is to fulfill your order and get it at your doorstep</span>
@@ -54,7 +52,6 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-            </div>
         </footer>
         </div>
     );
