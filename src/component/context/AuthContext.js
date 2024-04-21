@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [role, setRole] = useState(null);
     const [userId, setUserId] = useState(null);
@@ -14,25 +14,25 @@ export const AuthProvider = ({ children }) => {
     });
     const isToken = localStorage.getItem("token");
 
-    useEffect(() => {
-        const verifyToken = async () => {
-            if (isToken) {
-                try {
-                    await axios.get('https://sendit-backend-rm0b.onrender.com/user/verify-token', {
-                        headers: { Authorization: `Bearer ${isToken}` }
-                    });
-                    // Optionally, update the user from the response
-                    setCurrentUser(JSON.parse(localStorage.getItem("user"))); // Refresh user from storage if needed
-                } catch (error) {
-                    console.error('Token verification failed:', error);
-                    setCurrentUser(null); // Clear user on failure
-                }
-            }
-            setLoading(false);
-        };
+    // useEffect(() => {
+    //     const verifyToken = async () => {
+    //         if (isToken) {
+    //             try {
+    //                 await axios.get('https://sendit-backend-rm0b.onrender.com/user/verify-token', {
+    //                     headers: { Authorization: `Bearer ${isToken}` }
+    //                 });
+    //                 // Optionally, update the user from the response
+    //                 setCurrentUser(JSON.parse(localStorage.getItem("user"))); // Refresh user from storage if needed
+    //             } catch (error) {
+    //                 console.error('Token verification failed:', error);
+    //                 setCurrentUser(null); // Clear user on failure
+    //             }
+    //         }
+    //         setLoading(false);
+    //     };
 
-        verifyToken();
-    }, [isToken]);
+    //     verifyToken();
+    // }, [isToken]);
 
     const login = async (email, password) => {
         try {
@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
     const value = { currentUser, userId, login, isToken, logout, error, role };
     return (
         <AuthContext.Provider value={value}>
-            {!loading && children}
+            { children}
         </AuthContext.Provider>
     );
 };
