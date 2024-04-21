@@ -79,13 +79,17 @@ function ProtectedPage() {
   return (
     <div>
       <div className="dashboard-banner">
+        <div className="fasd">
         <h1>{currentUser?.username} Here Is Your Orders Overview</h1>
+        </div>
       </div>
       <div>
+        <div>
         <h2 style={{float: 'left', padding: "8px"}}>Your Orders</h2>
         <h5 style={{float: 'right', padding: "8px"}}>
-          <NavLink style={{ backgroundColor: '#3498db', color: '#fff', textDecoration: "none", padding: "5px"}} to="/new-order">Create New Order</NavLink>
+          <NavLink style={{ backgroundColor: '#3498db', color: '#fff', textDecoration: "none", padding: "10px", borderRadius: "8px"}} to="/new-order">Create New Order</NavLink>
         </h5>
+        </div>
         {orders.length > 0 ? (
           <table className="table table-striped table-hover order-table">
             <thead>

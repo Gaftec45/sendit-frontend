@@ -7,7 +7,7 @@ const GuestNavbar = () => {
     return (
         <div className="container-fluid">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <NavLink className="navbar-brand" to="/">SendIT</NavLink>
+                <NavLink className="navbar-brad" to="/">SendIT</NavLink>
                 <button className="navbar-toggler" type="button" onClick={() => setIsOpen(!isOpen)}>
                     <span className="navbar-toggler-icon"></span>
                 </button>

@@ -21,11 +21,17 @@ function PublicPage() {
         </header>
       </div>
       <section id="about">
-        <div className="container">
+        <div className="containenr">
           <div className="row">
             <div className="col-lg-6">
               <div className="about-content">
                 <h2>About Us</h2>
+                <p>
+                  Quickly incentivize impactful action items before tactical collaboration and idea-sharing. Monotonically engage market-driven intellectual capital through wireless opportunities. Progressively network performance-based services for functionalized testing procedures.
+                </p>
+                <p>
+                  Quickly incentivize impactful action items before tactical collaboration and idea-sharing. Monotonically engage market-driven intellectual capital through wireless opportunities. Progressively network performance-based services for functionalized testing procedures.
+                </p>
                 <p>
                   Quickly incentivize impactful action items before tactical collaboration and idea-sharing. Monotonically engage market-driven intellectual capital through wireless opportunities. Progressively network performance-based services for functionalized testing procedures.
                 </p>

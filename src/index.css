@@ -16,9 +16,34 @@ code {
   text-align: center;
 }
 /* header styling */
-/* .navbar{
-  margin: auto 20px;
-} */
+.navbar{
+  padding: 20px;
+  font-size: 25px;
+}
+
+.navbar-brad{
+  font-size: 40px;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 10px;
+  color: #fff;
+}
+
+.navbar-brad:hover{
+  text-decoration: none;
+  color: #ccc;
+}
+.navbar-braid{
+  font-size: 40px;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 10px;
+  color: #000000;
+}
+.navbar-braid:hover{
+  text-decoration: none;
+  color: #575757;
+}
 
 .navbar-brand, .collapse {
   margin-left: 20px;
@@ -60,6 +85,7 @@ code {
   background-image: url(/public/img/deli.jpg);
   background-size: cover;
   display: inline-block;
+  border-radius: 8px;
 }
 #maincontent img{
   margin: auto;
@@ -75,6 +101,13 @@ code {
   border-radius: 20px;
   position: relative;
   float: right;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    width: auto;
+    height: auto;
+  }
 }
 
 .content h1{
@@ -137,19 +170,21 @@ code {
   height: 400px;
 }
 
-@media screen and (max-width: 768px) {
-  .aboutC{
-    width: 100%;
-  }
-  .aboutP{
-    width: auto;
-    margin-top: 20px;
-  }
-  .aboutP img{
-    width: auto;
-    height: 400px;
-  }
+.about-image{
+  margin-top: 20px;
+  max-height: 400px;
+  overflow: scroll;
 }
+
+.about-image::-webkit-scrollbar{
+  display: none;
+}
+
+.about-image .img-fluid{
+  border-radius: 10px;
+  /* max-height: 370px; */
+}
+
 
 /* footer styling */
 
@@ -282,11 +317,17 @@ code {
 .dashboard-banner {
   background: url(/public/img/deli.jpg) no-repeat center center;
   background-size: cover;
-  height: 500px;
+  height: 600px;
   color: #fff;
   text-align: center;
-  border-radius: 0;
+  border-radius: 10px; 
   margin-bottom: 20px;
+}
+
+.fasd{
+  width: 100%;
+  height: 100%;
+  background-color: #0000008d;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -300,27 +341,25 @@ code {
 }
 
 .dashboard-header {
-  background-image: linear-gradient(to right, #000000, #2e2e2e);
+  background-image: linear-gradient(to right, #5ca1af, #76b061);
   color: #fff;
   padding: 20px 15px;
   border-radius: 0;
   margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
+  border-radius: 8px;
 }
 .dashboard-header h2 {
   margin: 0;
 }
 .des {
-  background-image: linear-gradient(to right, #000000, #2e2e2e);
+  background-image: linear-gradient(to right, #233744, #868686);
   color: #fff;
   padding: 20px 15px;
   border-radius: 0;
   margin-top: 20px;
   margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.table{
-  width: 100%;
+  font-size: 24px;
 }
