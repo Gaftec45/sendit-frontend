@@ -3,6 +3,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaGoogle, FaPinterest, FaTwitter }
 
 const Footer = () => {
     return (
+        <div className='footer-section'>
         <footer className="bg-dark text-white">
             <div className="container">
                 <div className="row">
@@ -55,6 +56,7 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
+        </div>
     );
 }
  
