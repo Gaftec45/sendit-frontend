@@ -65,9 +65,9 @@ const AdminDashboard = () => {
                         <strong>Admin Details</strong>
                     </div>
                     <div className="card-body">
-                        <h5 className="card-title">{currentUser.username}</h5>
-                        <p className="card-text">{currentUser.email}</p>
-                        <NavLink className="btn btn-success" onClick={logout}>Logout</NavLink>
+                        <h5 className="card-title">{currentUser?.username}</h5>
+                        <p className="card-text">{currentUser?.email}</p>
+                        <NavLink className="btn btn-success" onClick={ logout }>Logout</NavLink>
 
                     </div>
                 </div>
