@@ -366,11 +366,11 @@ code {
 
 /* error Page styling */
 
-.container {
+.containerr {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 .content {
   text-align: center;
