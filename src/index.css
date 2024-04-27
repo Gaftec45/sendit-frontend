@@ -370,10 +370,12 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 .containerr .content {
   text-align: center;
+  width: auto;
+  height: auto;
 }
 .containerr .content h1 {
   font-size: 3em;
