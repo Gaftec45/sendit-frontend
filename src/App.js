@@ -10,6 +10,7 @@ import OrderForm from "./Pages/OrderForm";
 import AdminDashboard from "./Pages/AdminDashboard";
 import { Navigate } from "react-router-dom";
 import EditOrderForm from "./Pages/EditOrderForm";
+import ErrorPage from "./404";
 
 
 //Creating a layout or wrapper for private routes
@@ -34,6 +35,7 @@ export default function App() {
         { index: true, element: <PublicPage /> },
         { path: "signup", element: <Signup /> },
         { path: "login", element: <Login /> },
+        { path: "*", element: <ErrorPage /> },
         { path: "user/dashboard", element: <ProtectedPage /> },
         { path: "new-order", element: <OrderForm /> },
         { path: "edit-order/:orderId", element:  <EditOrderForm /> },

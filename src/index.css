@@ -363,3 +363,31 @@ code {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-size: 24px;
 }
+
+/* error Page styling */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.content {
+  text-align: center;
+}
+h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  color: #dc3545; /* Red color */
+}
+p {
+  font-size: 1.2em;
+  color: #6c757d; /* Gray color */
+}
+a {
+  color: #007bff; /* Blue color */
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
