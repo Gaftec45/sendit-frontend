@@ -372,22 +372,22 @@ code {
   align-items: center;
   height: 100vh;
 }
-.content {
+.containerr .content {
   text-align: center;
 }
-h1 {
+.containerr .content h1 {
   font-size: 3em;
   margin-bottom: 10px;
   color: #dc3545; /* Red color */
 }
-p {
+.containerr .content p {
   font-size: 1.2em;
   color: #6c757d; /* Gray color */
 }
-a {
+.containerr .content a {
   color: #007bff; /* Blue color */
   text-decoration: none;
 }
-a:hover {
+.containerr .content a:hover {
   text-decoration: underline;
 }
