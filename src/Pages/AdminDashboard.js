@@ -26,7 +26,7 @@ const AdminDashboard = () => {
                     }
                   });
                 setAdmin(response.data.admin);
-                setUsers(response.data.users);
+                setUsers(response.data.users); 
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
